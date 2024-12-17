@@ -12,3 +12,6 @@ export interface Question {
     isSelected?: boolean;
     onPress: () => void;
   }
+  export interface CardProps {
+    title: string;
+  }
