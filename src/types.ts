@@ -16,7 +16,7 @@ export interface AnswerOptionProps {
   onPress: () => void;
 }
 export interface CardProps {
-  title: string;
+  title?: string;
 }
 
 export interface CustomButtonProps extends ComponentProps<typeof Pressable> {

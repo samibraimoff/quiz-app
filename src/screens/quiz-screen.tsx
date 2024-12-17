@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { QuestionCard } from "../components/question-card";
@@ -7,16 +8,21 @@ import { Fragment } from "react";
 import { CustomButton } from "../components/custom-button";
 
 export const QuizScreen = () => {
-  const question = questions[0];
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const question = questions[questionIndex];
+
+  const onNextQuestion = () => {
+    setQuestionIndex((questionIndex) => questionIndex + 1);
+  };
 
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.container}>
         <View>
-          <Text style={styles.title}>Question 1 / 5</Text>
+          <Text style={styles.title}>Question {questionIndex + 1} / 5</Text>
         </View>
         <View>
-          {questions.length ? (
+          {question ? (
             <Fragment>
               <QuestionCard question={question} />
               <Text style={styles.time}>20 sec.</Text>
@@ -30,7 +36,7 @@ export const QuizScreen = () => {
         <CustomButton
           title="Next"
           onLongPress={() => console.log("long pressed")}
-          onPress={() => console.log("pressed")}
+          onPress={onNextQuestion}
           rightIcon={
             <FontAwesome name="long-arrow-right" size={20} color="white" />
           }

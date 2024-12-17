@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { AnswerOption } from "./answer-option";
 import { QuestionCardProps } from "../types";
 import { Card } from "./card";
 
 export const QuestionCard = ({ question }: QuestionCardProps) => {
-  const selectedOption = question.options[3];
+  const [selectedOption, setSelectedOption] = useState<string | undefined>();
 
-  const onPress = (answer: string) => {
-    console.log("Pressed", answer);
+  const onPress = (option: string) => {
+    setSelectedOption(option);
   };
 
   return (
