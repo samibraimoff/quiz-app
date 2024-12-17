@@ -29,6 +29,7 @@ export const QuizScreen = () => {
         </View>
         <CustomButton
           title="Next"
+          onLongPress={() => console.log("long pressed")}
           onPress={() => console.log("pressed")}
           rightIcon={
             <FontAwesome name="long-arrow-right" size={20} color="white" />

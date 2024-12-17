@@ -1,6 +1,7 @@
 import {
-  PressableProps,
+  Pressable,
 } from "react-native";
+import { ComponentProps } from "react";
 
 export interface Question {
     title: string;
@@ -20,7 +21,7 @@ export interface Question {
     title: string;
   }
 
-  export interface CustomButtonProps extends PressableProps {
+  export interface CustomButtonProps extends ComponentProps<typeof Pressable> {
     title: string;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
