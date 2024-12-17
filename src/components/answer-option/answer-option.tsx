@@ -11,9 +11,12 @@ export const AnswerOption = ({
     <Pressable
       style={[
         styles.container,
-        isSelected && { backgroundColor: "#E1F396", borderColor: "#E1F396" },
+        isSelected && {
+          backgroundColor: "#E1F396",
+          borderColor: "#E1F396",
+        },
       ]}
-      onPress={() => onPress(option)}
+      onPress={onPress}
     >
       <Text>{option}</Text>
     </Pressable>

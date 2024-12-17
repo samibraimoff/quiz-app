@@ -3,15 +3,25 @@ import { styles } from "./question-card.styles";
 import { AnswerOption } from "../answer-option/answer-option";
 import { QuestionCardProps } from "../../types";
 
-export const QuestionCard = ({ question, onPress }: QuestionCardProps) => {
+export const QuestionCard = ({ question }: QuestionCardProps) => {
+  const selectedOption = question.options[3];
+
+  const onPress = (answer: string) => {
+    console.log("Pressed", answer);
+  };
+
   return (
     <View style={styles.card}>
       <Text style={styles.question}>{question.title}</Text>
       <View style={styles.answerContainer}>
-        <AnswerOption onPress={onPress} option={question.options[0]} />
-        <AnswerOption onPress={onPress} option={question.options[1]} />
-        <AnswerOption onPress={onPress} option={question.options[2]} />
-        <AnswerOption onPress={onPress} option={question.options[3]} />
+        {question.options.map((option) => (
+          <AnswerOption
+            key={option}
+            onPress={() => onPress(option)}
+            option={option}
+            isSelected={selectedOption === option}
+          />
+        ))}
       </View>
     </View>
   );
