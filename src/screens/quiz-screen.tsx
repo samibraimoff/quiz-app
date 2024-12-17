@@ -2,8 +2,15 @@ import { Text, View, SafeAreaView, Pressable } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { styles } from "./quiz-screen.styles";
 import { QuestionCard } from "../components/question-card/question-card";
+import questions from "../data/questions";
 
 export const QuizScreen = () => {
+  const question = questions[0];
+
+  const onPress = (answer: string) => {
+    console.log("Pressed", answer);
+  };
+
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.container}>
@@ -11,7 +18,7 @@ export const QuizScreen = () => {
           <Text style={styles.title}>Question 1 / 5</Text>
         </View>
         <View>
-          <QuestionCard />
+          <QuestionCard question={question} onPress={onPress} />
           <Text style={styles.time}>20 sec.</Text>
         </View>
         <Pressable

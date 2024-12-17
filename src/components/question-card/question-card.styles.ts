@@ -24,6 +24,6 @@ export const styles = StyleSheet.create({
         fontWeight: '500'
     },
     answerContainer: {
-        gap: 10
+        gap: 14
     }
 });
