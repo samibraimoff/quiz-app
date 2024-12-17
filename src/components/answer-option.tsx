@@ -1,5 +1,5 @@
-import { Text, View, Pressable, StyleSheet } from "react-native";
-import { AnswerOptionProps } from "../../types";
+import { Text, Pressable, StyleSheet } from "react-native";
+import { AnswerOptionProps } from "../types";
 
 export const AnswerOption = ({
   option,

@@ -1,5 +1,5 @@
 import { Pressable, Text, StyleSheet, View } from "react-native";
-import { CustomButtonProps } from "../../types";
+import { CustomButtonProps } from "../types";
 
 export const CustomButton = ({
   title,

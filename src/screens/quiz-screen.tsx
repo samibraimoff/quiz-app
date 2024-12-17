@@ -1,10 +1,10 @@
-import { Text, View, SafeAreaView, Pressable, StyleSheet } from "react-native";
+import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { QuestionCard } from "../components/question-card/question-card";
+import { QuestionCard } from "../components/question-card";
 import questions from "../data/questions";
-import { Card } from "../components/card/card";
+import { Card } from "../components/card";
 import { Fragment } from "react";
-import { CustomButton } from "../components/custom-button/custom-button";
+import { CustomButton } from "../components/custom-button";
 
 export const QuizScreen = () => {
   const question = questions[0];

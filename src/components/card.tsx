@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from "react-native";
-import { CardProps } from "../../types";
+import { CardProps } from "../types";
 import { PropsWithChildren } from "react";
 
 export const Card = ({ title, children }: PropsWithChildren<CardProps>) => {

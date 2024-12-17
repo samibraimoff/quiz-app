@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
-import { AnswerOption } from "../answer-option/answer-option";
-import { QuestionCardProps } from "../../types";
-import { Card } from "../card/card";
+import { AnswerOption } from "./answer-option";
+import { QuestionCardProps } from "../types";
+import { Card } from "./card";
 
 export const QuestionCard = ({ question }: QuestionCardProps) => {
   const selectedOption = question.options[3];
