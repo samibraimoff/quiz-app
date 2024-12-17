@@ -1,3 +1,7 @@
+import {
+  PressableProps,
+} from "react-native";
+
 export interface Question {
     title: string;
     correctAnswer: string;
@@ -14,4 +18,10 @@ export interface Question {
   }
   export interface CardProps {
     title: string;
+  }
+
+  export interface CustomButtonProps extends PressableProps {
+    title: string;
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
   }

@@ -1,10 +1,10 @@
-import { Text, View, SafeAreaView, Pressable } from "react-native";
+import { Text, View, SafeAreaView, Pressable, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { styles } from "./quiz-screen.styles";
 import { QuestionCard } from "../components/question-card/question-card";
 import questions from "../data/questions";
 import { Card } from "../components/card/card";
 import { Fragment } from "react";
+import { CustomButton } from "../components/custom-button/custom-button";
 
 export const QuizScreen = () => {
   const question = questions[0];
@@ -27,19 +27,38 @@ export const QuizScreen = () => {
             </Card>
           )}
         </View>
-        <Pressable
+        <CustomButton
+          title="Next"
           onPress={() => console.log("pressed")}
-          style={styles.buttonContainer}
-        >
-          <Text style={styles.buttonText}>Next</Text>
-          <FontAwesome
-            name="long-arrow-right"
-            size={20}
-            color="white"
-            style={styles.buttonIcon}
-          />
-        </Pressable>
+          rightIcon={
+            <FontAwesome name="long-arrow-right" size={20} color="white" />
+          }
+        />
       </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: "#FDFEF4",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+    padding: 20,
+  },
+  title: {
+    textAlign: "center",
+    color: "#005055",
+    fontSize: 18,
+    fontWeight: "400",
+  },
+  time: {
+    marginTop: 20,
+    textAlign: "center",
+    fontWeight: "600",
+    fontSize: 16,
+  },
+});

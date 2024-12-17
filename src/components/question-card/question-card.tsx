@@ -1,5 +1,4 @@
-import { Text, View } from "react-native";
-import { styles } from "./question-card.styles";
+import { StyleSheet, Text, View } from "react-native";
 import { AnswerOption } from "../answer-option/answer-option";
 import { QuestionCardProps } from "../../types";
 import { Card } from "../card/card";
@@ -26,3 +25,9 @@ export const QuestionCard = ({ question }: QuestionCardProps) => {
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  answerContainer: {
+    gap: 14,
+  },
+});
