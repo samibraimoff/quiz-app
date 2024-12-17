@@ -1,25 +1,21 @@
-import { useState } from "react";
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { QuestionCard } from "../components/question-card";
-import questions from "../data/questions";
 import { Card } from "../components/card";
 import { Fragment } from "react";
 import { CustomButton } from "../components/custom-button";
+import { useQuizContext } from "../providers/quiz-provider";
 
 export const QuizScreen = () => {
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const question = questions[questionIndex];
-
-  const onNextQuestion = () => {
-    setQuestionIndex((questionIndex) => questionIndex + 1);
-  };
+  const { question, onNextQuestion, score, totalQuestions } = useQuizContext();
 
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.container}>
         <View>
-          <Text style={styles.title}>Question {questionIndex + 1} / 5</Text>
+          <Text style={styles.title}>
+            Question {score} / {totalQuestions}
+          </Text>
         </View>
         <View>
           {question ? (
@@ -29,7 +25,7 @@ export const QuizScreen = () => {
             </Fragment>
           ) : (
             <Card title="End of the game">
-              <Text>Correct answers 4 / 5</Text>
+              <Text>Correct answers {score} / 5</Text>
             </Card>
           )}
         </View>

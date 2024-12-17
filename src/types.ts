@@ -12,8 +12,6 @@ export interface QuestionCardProps {
 
 export interface AnswerOptionProps {
   option: string;
-  isSelected?: boolean;
-  onPress: () => void;
 }
 export interface CardProps {
   title?: string;

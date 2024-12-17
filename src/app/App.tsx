@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import { QuizScreen } from "../screens/quiz-screen";
+import { QuizProvider } from "../providers/quiz-provider";
 
 export default function App() {
   return (
     <>
-      <QuizScreen />
+      <QuizProvider>
+        <QuizScreen />
+      </QuizProvider>
       <StatusBar style="auto" />
     </>
   );

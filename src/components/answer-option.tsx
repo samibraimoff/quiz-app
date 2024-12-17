@@ -1,11 +1,11 @@
 import { Text, Pressable, StyleSheet } from "react-native";
 import { AnswerOptionProps } from "../types";
+import { useQuizContext } from "../providers/quiz-provider";
 
-export const AnswerOption = ({
-  option,
-  isSelected,
-  onPress,
-}: AnswerOptionProps) => {
+export const AnswerOption = ({ option }: AnswerOptionProps) => {
+  const { selectedOption, setSelectedOption } = useQuizContext();
+  const isSelected = option === selectedOption;
+
   return (
     <Pressable
       style={[
@@ -15,7 +15,7 @@ export const AnswerOption = ({
           borderColor: "#E1F396",
         },
       ]}
-      onPress={onPress}
+      onPress={() => setSelectedOption(option)}
     >
       <Text>{option}</Text>
     </Pressable>
