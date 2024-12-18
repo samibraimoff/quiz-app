@@ -1,6 +1,6 @@
 import { Text, Pressable, StyleSheet } from "react-native";
 import { AnswerOptionProps } from "../types";
-import { useQuizContext } from "../providers/quiz-provider";
+import { useQuizContext } from "../hooks/use-quiz-context";
 
 export const AnswerOption = ({ option }: AnswerOptionProps) => {
   const { selectedOption, setSelectedOption } = useQuizContext();

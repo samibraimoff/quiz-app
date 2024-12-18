@@ -1,31 +1,48 @@
-import { PropsWithChildren, createContext, useState, useContext } from "react";
+import {
+  PropsWithChildren,
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+} from "react";
 import questions from "../data/questions";
 import { Question } from "../types";
 
 interface QuizContext {
   question?: Question;
   questionIndex: number;
-  onNextQuestion: () => void;
   selectedOption?: string;
-  setSelectedOption: (option: string) => void;
   score: number;
   totalQuestions: number;
+  bestScore: number;
+  onNextQuestion: () => void;
+  setSelectedOption: (option: string) => void;
+  isFinished?: boolean;
 }
 
 export const QuizContext = createContext<QuizContext>({
   questionIndex: 0,
-  onNextQuestion: () => {},
-  setSelectedOption: () => {},
   score: 0,
   totalQuestions: 0,
+  onNextQuestion: () => {},
+  setSelectedOption: () => {},
+  bestScore: 0,
+  isFinished: false,
 });
 
 export const QuizProvider = ({ children }: PropsWithChildren) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | undefined>();
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const question = questions[questionIndex];
   const isFinished = questionIndex >= questions.length;
+
+  useEffect(() => {
+    if (isFinished && score > bestScore) {
+      setBestScore(score);
+    }
+  }, [isFinished]);
 
   const resetGame = () => {
     setQuestionIndex(0);
@@ -54,13 +71,11 @@ export const QuizProvider = ({ children }: PropsWithChildren) => {
         setSelectedOption,
         score,
         totalQuestions: questions.length,
+        bestScore,
+        isFinished,
       }}
     >
       {children}
     </QuizContext.Provider>
   );
-};
-
-export const useQuizContext = () => {
-  return useContext(QuizContext);
 };

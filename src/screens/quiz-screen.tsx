@@ -2,12 +2,33 @@ import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { QuestionCard } from "../components/question-card";
 import { Card } from "../components/card";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { CustomButton } from "../components/custom-button";
-import { useQuizContext } from "../providers/quiz-provider";
+import { useQuizContext } from "../hooks/use-quiz-context";
+import { useTimer } from "../hooks/use-timer";
 
 export const QuizScreen = () => {
-  const { question, onNextQuestion, score, totalQuestions } = useQuizContext();
+  const {
+    question,
+    onNextQuestion,
+    score,
+    totalQuestions,
+    bestScore,
+    isFinished,
+  } = useQuizContext();
+  const { time, startTimer, clearTimer } = useTimer(20);
+
+  useEffect(() => {
+    startTimer();
+
+    return () => clearTimer();
+  }, [question, isFinished]);
+
+  useEffect(() => {
+    if (time <= 0) {
+      onNextQuestion();
+    }
+  }, [time]);
 
   return (
     <SafeAreaView style={styles.page}>
@@ -21,11 +42,12 @@ export const QuizScreen = () => {
           {question ? (
             <Fragment>
               <QuestionCard question={question} />
-              <Text style={styles.time}>20 sec.</Text>
+              <Text style={styles.time}>{time} sec.</Text>
             </Fragment>
           ) : (
             <Card title="End of the game">
               <Text>Correct answers {score} / 5</Text>
+              <Text>Best score: {bestScore}</Text>
             </Card>
           )}
         </View>
