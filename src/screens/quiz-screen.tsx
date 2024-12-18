@@ -1,5 +1,6 @@
 import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import LottieView from "lottie-react-native";
 import { QuestionCard } from "../components/question-card";
 import { Card } from "../components/card";
 import { Fragment, useEffect, useState } from "react";
@@ -45,10 +46,18 @@ export const QuizScreen = () => {
               <Text style={styles.time}>{time} sec.</Text>
             </Fragment>
           ) : (
-            <Card title="End of the game">
-              <Text>Correct answers {score} / 5</Text>
-              <Text>Best score: {bestScore}</Text>
-            </Card>
+            <>
+              <LottieView
+                style={StyleSheet.absoluteFill}
+                loop={true}
+                autoPlay
+                source={require("../../assets/party.json")}
+              />
+              <Card title="End of the game">
+                <Text>Correct answers {score} / 5</Text>
+                <Text>Best score: {bestScore}</Text>
+              </Card>
+            </>
           )}
         </View>
         <CustomButton
